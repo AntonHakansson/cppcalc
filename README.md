@@ -9,7 +9,7 @@ A very simple c++ calculator.
 ### Supported operations:
 Add Sub Mul Div Pow Sin Cos Tan Max Min
 
-TODO: GIF
+![cppcalc](https://user-images.githubusercontent.com/15860608/50936555-739be500-1470-11e9-9924-1b8b82fde508.gif)
 
 ## Build
 Before running `build.bat` run `shell/setVcArgs.bat` to configure x64 build environment.
