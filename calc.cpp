@@ -438,32 +438,18 @@ r64 evalExpression(Tokenizer *tokenizer) {
 
 #ifndef TEST
 int main(int numArguments, char** arguments) {
-  bool32 isCommandLine = false;
-
-  for (int i = 1; i < numArguments - 1; i++) {
-    if (strcmp(arguments[i], "-i") == 0) {
-      isCommandLine = true;
-    }
-  }
-
-  if (isCommandLine && numArguments < 3) {
-    printf("Usage: calc.exe [opts] expr");
+  if (numArguments < 2) {
+    printf("Usage: calc.exe expr");
     return 0;
   }
 
+  const char *expr = arguments[numArguments - 1];
 
-  if (isCommandLine) {
-    const char *expr = arguments[numArguments - 1];
+  Tokenizer tokenizer = {};
+  tokenizer.at = const_cast<char*>(expr);
 
-    Tokenizer tokenizer = {};
-    tokenizer.at = const_cast<char*>(expr);
-
-    r64 result = evalExpression(&tokenizer);
-    printf("%f\n", result);
-  }
-  else {
-    // TODO(Hakan): open calc window
-  }
+  r64 result = evalExpression(&tokenizer);
+  printf("%f\n", result);
 
   return 0;
 }
